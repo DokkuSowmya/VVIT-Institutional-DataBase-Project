@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Calendar</title>
+    <style>
+         body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            padding-top: 30px;
+        }
+        .header {
+            background-color: darkorange;
+            padding: 15px;
+            width: 100%;
+            max-width: 1460px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            border-radius: 15px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .header img {
+            position: absolute;
+            top: 5px;
+            left: 30px;
+            width: 90px;
+            height: auto;
+        }
+        .header-title {
+            flex-grow: 1;
+            text-align: center;
+            margin: 0;
+            color: white;
+        }
+        .header h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            letter-spacing: 0px;
+        }
+        .filter-container {
+            width: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 150px;
+            align-items: center;
+        }
+        .filter-container label {
+            margin: 0px;
+            padding-right: 5px;
+            font-weight: bold;
+        }
+        .filter-container select {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            margin: 5px;
+            border: 1px solid darkorange;
+            border-radius: 5px;
+        }
+        table {
+            width: 90%;
+            border: 1px solid darkorange;
+            border-collapse: collapse;
+            display: none;
+            margin-top: 45px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        table th, table td {
+            border: 1px solid darkorange;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: darkorange;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="logo.jpg" alt="VVIT Logo">
+    <h1>Academic Calendar</h1>
+</div>
+
+<div class="filter-container">
+    <label for="academicYear">Academic Year:</label>
+    <select id="academicYear" onchange="filterTable()">
+        <option value="All">All</option>
+        <option value="2019 - 20">2019 - 20</option>
+        <option value="2020 - 21">2020 - 21</option>
+        <option value="2021 - 22">2021 - 22</option>
+    </select>
+
+    <label for="regulation">Regulation:</label>
+    <select id="regulation" onchange="filterTable()">
+        <option value="All">All</option>
+        <option value="R16">R16</option>
+        <option value="R18">R18</option>
+        <option value="R20">R20</option>
+    </select>
+
+    <label for="graduation">Graduation:</label>
+    <select id="graduation" onchange="filterTable()">
+        <option value="All">All</option>
+        <option value="Undergraduate">Undergraduate</option>
+        <option value="Postgraduate">Postgraduate</option>
+    </select>
+
+    <label for="year">Year:</label>
+    <select id="year" onchange="filterTable()">
+        <option value="All">All</option>
+        <option value="First Year">First Year</option>
+        <option value="Second Year">Second Year</option>
+        <option value="Third Year">Third Year</option>
+        <option value="Fourth Year">Fourth Year</option>
+    </select>
+</div>
+
+<table id="academicTable">
+    <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Academic Year</th>
+            <th>Regulation</th>
+            <th>Graduation</th>
+            <th>Year</th>
+            <th>Calenders</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Example rows (add more as needed) -->
+        <tr>
+            <td>1</td>
+            <td>2019 - 20</td>
+            <td>R16</td>
+            <td>Undergraduate</td>
+            <td>First Year</td>
+            <td><a href="Academic_Calendar_UG_R16_2019_20.pdf">2019 - 20</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2019 - 20</td>
+            <td>R16</td>
+            <td>Undergraduate</td>
+            <td>Second Year</td>
+            <td><a href="Academic_Calendar_UG_R16_2019_20.pdf">2020 - 21</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>2019 - 20</td>
+            <td>R16</td>
+            <td>Undergraduate</td>
+            <td>Third Year</td>
+            <td><a href="Academic_Calendar_UG_R16_2019_20.pdf">2021 - 22</a></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>2019 - 20</td>
+            <td>R16</td>
+            <td>Undergraduate</td>
+            <td>Fourth Year</td>
+            <td><a href="Academic_Calendar_UG_R16_2019_20.pdf">2019 - 20</a></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2020 - 21</td>
+            <td>R18</td>
+            <td>Undergraduate</td>
+            <td>First Year</td>
+            <td><a href="Academic_Calendar_UG_R18_2020_21.pdf">2019 - 20</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2020 - 21</td>
+            <td>R18</td>
+            <td>Undergraduate</td>
+            <td>Second Year</td>
+            <td><a href="Academic_Calendar_UG_R18_2020_21.pdf">2020 - 21</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>2020 - 21</td>
+            <td>R18</td>
+            <td>Undergraduate</td>
+            <td>Third Year</td>
+            <td><a href="Academic_Calendar_UG_R18_2020_21.pdf">2021 - 22</a></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>2020 - 21</td>
+            <td>R18</td>
+            <td>Undergraduate</td>
+            <td>Fourth Year</td>
+            <td><a href="Academic_Calendar_UG_R18_2020_21.pdf">2019 - 20</a></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2021 - 22</td>
+            <td>R20</td>
+            <td>Undergraduate</td>
+            <td>First Year</td>
+            <td><a href="Academic_Calendar_UG_R20_2019_20.pdf">2021 - 22</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2021 - 22</td>
+            <td>R20</td>
+            <td>Undergraduate</td>
+            <td>Second Year</td>
+            <td><a href="Academic_Calendar_UG_R20_2021_22.pdf">2020 - 21</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>2021 - 22</td>
+            <td>R20</td>
+            <td>Undergraduate</td>
+            <td>Third Year</td>
+            <td><a href="Academic_Calendar_UG_R20_2021_22.pdf">2021 - 22</a></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>2021 - 22</td>
+            <td>R20</td>
+            <td>Undergraduate</td>
+            <td>Fourth Year</td>
+            <td><a href="Academic_Calendar_UG_R20_2021_22.pdf">2019 - 20</a></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>2021 - 22</td>
+            <td>R20</td>
+            <td>Postgraduate</td>
+            <td>Fourth Year</td>
+            <td><a href="Academic_Calendar_PG_R20_2021_22.pdf">2019 - 20</a></td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
+
+<script>
+    function filterTable() {
+        var academicYear = document.getElementById('academicYear').value.toUpperCase();
+        var regulation = document.getElementById('regulation').value.toUpperCase();
+        var graduation = document.getElementById('graduation').value.toUpperCase();
+        var year = document.getElementById('year').value.toUpperCase();
+
+        var table = document.getElementById('academicTable');
+        var rows = table.getElementsByTagName('tr');
+
+        var visible = false; // Flag to track if any row should be visible
+
+        for (var i = 1; i < rows.length; i++) {
+            var row = rows[i];
+            var rowData = row.getElementsByTagName('td');
+
+            var rowAcademicYear = rowData[1].textContent.toUpperCase();
+            var rowRegulation = rowData[2].textContent.toUpperCase();
+            var rowGraduation = rowData[3].textContent.toUpperCase();
+            var rowYear = rowData[4].textContent.toUpperCase();
+
+            // Check if the row should be displayed based on selected filters
+            if (
+                (academicYear === 'ALL' || rowAcademicYear.indexOf(academicYear) > -1) &&
+                (regulation === 'ALL' || rowRegulation.indexOf(regulation) > -1) &&
+                (graduation === 'ALL' || rowGraduation.indexOf(graduation) > -1) &&
+                (year === 'ALL' || rowYear.indexOf(year) > -1)
+            ) {
+                row.style.display = '';
+                visible = true; // Set flag to true if at least one row is visible
+            } else {
+                row.style.display = 'none';
+            }
+        }
+
+        // Show or hide the table based on whether any row is visible
+        table.style.display = visible ? 'table' : 'none';
+    }
+</script>
+
+</body>
+</html>
