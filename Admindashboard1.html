@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Aspects</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Linking Google Font Link For Icons -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <!-- Importing Google font - Poppins -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" />
+    <style>
+        @charset "UTF-8";
+        body {
+            background: url("college.jpg") no-repeat center center fixed;
+            background-size: cover;
+            height: 50vh;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+        }
+ /* Define the fade-in animation */
+        @keyframes fadeInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+
+ /* Apply initial hidden state and animation to the h2 tags */
+        .fade-in-right {
+            opacity: 0; /* Start hidden */
+        }
+
+        .fade-in-left {
+            opacity: 0; /* Start hidden */
+        }
+
+        /* Start the animation */
+        .start-fade-in-right {
+            animation: fadeInFromRight 3s forwards; /* Fade in from right over 3 seconds */
+        }
+
+        .start-fade-in-left {
+            animation: fadeInFromLeft 3s forwards; /* Fade in from left over 3 seconds */
+        }
+ /* Container styling */
+        .fade-in-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center vertically */
+            align-items: flex-start; /* Align right */
+            position: absolute;
+            right: 50px; /* Adjust as needed */
+            top: 60%;
+            transform: translateY(-50%); /* Center from top and bottom */
+        }
+
+        /* Style for the headings */
+        .fade-in-container h2 {
+            background-color: rgba(255, 255, 255, 0.3); /* White background with 70% opacity */
+            padding: 10px; /* Add padding for spacing around the text */
+            border-radius: 5px; /* Optional: Add rounded corners */
+            font-weight: bold;
+            font-family: Bevan;
+            color: #ffffff;
+            font-size: 231.25%;
+            text-shadow: none;
+            line-height: 1.5;
+            margin: 10px 0; /* Add some margin for spacing */
+        }
+
+.body1 {
+      min-height: 10vh;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 40px;
+      display: flex;
+      overflow-y: auto;
+      flex-direction: column;
+      background: #161a2d;
+      padding: 0px 20px;
+       color: white; /* Text color */
+      transition: all 0.4s ease;
+      z-index:1;
+    }
+
+    .sidebar:hover {
+      width: 280px;
+    }
+
+    .sidebar .sidebar-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .sidebar .sidebar-header img {
+      width: 42px;
+      border-radius: 40%;
+    }
+
+    .sidebar .sidebar-header h2 {
+      color: #fff;
+      white-space: normal;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-left: 23px;
+    }
+
+    .sidebar-links h4 {
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 500;
+      white-space: nowrap;
+      margin: 1px 0;
+      position: relative;
+    }
+
+    .sidebar-links h4 span {
+      opacity: 0;
+    }
+
+    .sidebar:hover .sidebar-links h4 span {
+      opacity: 1;
+    }
+
+    .sidebar-links .menu-separator {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 15%;
+      height: 1px;
+      transform: scaleX(1);
+      transform: translateY(-50%);
+      background: #4f52ba;
+      transform-origin: right;
+      transition-delay: 0.2s;
+    }
+
+    .sidebar:hover .sidebar-links .menu-separator {
+      transition-delay: 0s;
+      transform: scaleX(0);
+    }
+
+    .sidebar-links {
+    
+      list-style: none;
+      margin-top: 10px;
+      height: 80%;
+      overflow-y: auto;
+      scrollbar-width: none;
+      background-color: #161a2d;
+      flex-grow: 1; /* Allow the list to grow and fill the available space */
+    }
+
+    .sidebar-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sidebar-links li a {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 0 30px;
+      color: #fff;
+      font-weight: 500;
+      font-size:15px;
+      white-space: normal;
+      padding: 10px 5px;
+      line-height:1.5;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .sidebar-links li a:hover {
+      color: #161a2d;
+      background: #fff;
+      border-radius: 10px;
+    }
+/* Submenu styling */
+.sidebar-links .submenu {
+  display: none;
+  position: absolute;
+  left: 280px; /* Adjust this value if needed */
+  top: 0;
+  background-color: #161a2d;
+  list-style: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1;
+  width: 200px; /* Adjust as necessary */
+}
+
+.sidebar-links .submenu li {
+  margin-bottom: 10px;
+}
+
+.sidebar-links .submenu li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.sidebar-links .submenu li a:hover {
+  color: #161a2d;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.sidebar-links li.has-submenu {
+  position: relative; /* Ensure the submenu is positioned correctly */
+}
+
+.sidebar-links li.has-submenu:hover .submenu {
+  display: block;
+}
+
+        
+        h1{
+            font-size:10px;
+        }
+        .header-title {
+            background-color: rgba(255, 255, 255, 0.8); /* White background with 70% opacity */
+            padding: 10px; /* Add padding for spacing around the text */
+            border-radius: 5px; /* Optional: Add rounded corners */
+            text-align: left; /* Changed from center to left */
+            font-size: 35px;
+            position: fixed;
+            left: 300px; /* Changed from 500px to 100px */
+            margin-top:10px;
+            color: #f0806c; /* Ensure text is visible */
+        }
+        #login-button {
+            background-color:#f0806c;/* Set background color to red */
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: white; /* Set text color to white */
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            padding: 10px 10px; /* Add some padding to make it look like a button */
+            border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+        }
+          /* Media queries for responsive design */
+        @media screen and (max-width: 768px) {
+            .fade-in-container {
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .fade-in-container h2 {
+                font-size: 150%;
+            }
+        }
+        
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 20px;}
+            .sidenav a {font-size: 25px;}
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: white;
+        }
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        main{
+            position:absolute;
+            left:120px;
+            top:0px;
+        }
+        img{
+            margin-top:10px;
+            left :20px;
+            width:19%;
+            height:auto;
+        }
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            font-size: 16px;  
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            background-color:#f0806c;
+            border-radius: 15px;
+            
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color:#f0806c;
+            min-width: 100px;
+            box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            top:155px;
+            border-radius: 15px;
+            left:400px;
+        }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size:20px;
+        }
+        .dropdown-content a:hover {
+            background-color: white;
+        }
+        #menu{
+            position:absolute;
+            top:20px;
+            left:40px;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        #home1{
+            font-size:20px;
+            position:fixed;
+            top:100px;
+            left:280px;
+        }
+        #Contact{
+            font-size:20px;
+            position:fixed;
+            top:100px;
+            left:520px;
+        }
+        #drop{
+            font-size:20px;
+            position:fixed;
+            top:100px;
+            left:400px;
+        }
+        ul {
+            padding: 0;
+            list-style: none;
+            background: #f2f2f2;
+            width: 300px;
+        }
+        ul li {
+            display: block;
+            position: relative;
+            line-height: 10px;
+            text-align: left;
+            padding:5px;
+            font-size:5px;
+        }
+        ul li a {
+            display: block;
+            color: #333;
+        }
+        ul li a:hover {
+            color: #fff;
+            background: #f0806c;
+        }
+        ul li ul.dropdown1 {
+            background: #f2f2f2;
+            display: none;
+            position: absolute;
+            z-index: 999;
+            left: 0;
+        }
+        ul li:hover ul.dropdown1 {
+            display: block;
+            /* Display the dropdown */
+        }
+        /* Draggable Circular Navigation Menu Integration */
+        nav {
+            position: fixed;
+            bottom: 0px;
+            right : 0px;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: grab;
+        }
+        nav .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(45deg);
+        }
+        .nav-content .toggle-btn{
+            height:40px;
+            width: 40px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            }
+        .nav-content span a {
+            height:50px;
+            width: 50px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .nav-content .toggle-btn {
+            font-size: 35px;
+            color:#f0806c;
+            z-index: 100;
+            cursor: pointer;
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+        nav.open .toggle-btn {
+            transform: rotate(270deg);
+        }
+        .nav-content span {
+            position: absolute;
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        nav.open .nav-content span {
+            transform: rotate(calc(var(--i) * (360deg / 10))) translateY(90px);
+            opacity: 1;
+        }
+        .nav-content span a {
+            text-decoration: none;
+            transform: rotate(-45deg);
+        }
+        .nav-content span a i {
+            font-size: 24px;
+            color:#f0806c;
+            transform: rotate(calc(var(--i) * (360deg / -10)));
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+        .nav-content span a:hover i {
+            opacity: 3;
+        }
+    </style>
+</head>
+<body>
+    <a href="login.jsp">
+        <button id="login-button">Login</button>
+    </a>
+    <h1 class="header-title">VASIREDDY VENKATADRI INSTITUTION OF TECHNOLOGY</h1>
+    <div class="body1">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="logo.png" alt="logo" />
+      <h2>VVIT Institutional Database</h2>
+    </div>
+    <ul class="sidebar-links">
+      <h4>
+        <span>Criteria</span>
+        <div class="menu-separator"></div>
+      </h4>
+      <li class="has-submenu">
+        <a href="#">
+          <span class="material-symbols-outlined"> school </span>Curriculum Aspects</a>
+          <ul class="submenu">
+      <li><a href="#">Curriculum Structure and Syllabus</a></li>
+      <li><a href="bosminutes.html">BOS Minutes</a></li>
+      <li><a href="#">Feedback</a></li>
+      <li><a href="AcademicCal.html">Academic Calendar</a></li>
+      <li><a href="Addoncourses.html">Add-on Courses</a></li>
+      <li><a href="Electivecourses.html">Elective Courses</a></li>
+    </ul>
+      </li>
+       <li>
+        <a href="#">
+          <span class="material-symbols-outlined"> menu_book</span>Teaching Learning and Evaluation </a>
+      </li>
+       <li>
+        <a href="#">
+          <span class="material-symbols-outlined"> science</span>Reasearch,Innovation and Extensions</a>
+      </li>
+       <li>
+        <a href="#">
+          <span class="material-symbols-outlined"> library_books </span>Infrastructure and learning resources</a>
+      </li>
+       <li>
+        <a href="#">
+          <span class="material-symbols-outlined"> groups </span>Student data and progression</a>
+      </li>
+       <li>
+        <a href="#">
+          <span class="material-symbols-outlined"> account_balance </span>Governance Leadership and management
+          </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="material-symbols-outlined"> verified </span>Governance Leadership and management
+          </a>
+      </li>
+     
+      <h4>
+        <span>General</span>
+        <div class="menu-separator"></div>
+      </h4>
+      <li>
+        <a href="#"><span class="material-symbols-outlined"> account_circle </span>Profile</a>
+      </li>
+      <li>
+       <a href="#"><span class="material-symbols-outlined"> notifications_active </span>Notifications</a>
+      </li>
+      <li>
+        <a href="#"><span class="material-symbols-outlined"> settings </span>Settings</a>
+      </li>
+      <li>
+        <a href="#"><span class="material-symbols-outlined"> logout </span>Logout</a>
+      </li>
+    </ul>
+   
+  </aside>
+  </div>
+    <main>
+        <img src="logo.jpg" alt="VVIT"/>    
+    </main>
+    <div class="fade-in-container">
+        <h2 class="fade-in-right">Absolute Discipline</h2>
+        <h2 class="fade-in-left">Absolute Education</h2>
+    </div>
+    <div class="navbar">
+        <b><a href="#home" id="home1">Home</a></b>
+        <b>
+            <div class="dropdown">
+                <button class="dropbtn" id="drop"><b>Criteria </b>
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="AdminC.html">Curriculum Structure and Syllabus</a>
+                    <a href="bosminutes.html">BOS Minutes</a>
+                    <a href="#">Feedback</a>
+                    <a href="AcademicCal.html">Academic calendar</a>
+                    <a href="Addoncourses.html">Add-on courses</a>
+                    <a href="Electivecourses.html">ElectiveCourses</a>
+                </div>
+            </div> 
+        </b>
+        <b><a href="about.html" id="Contact">About-Us</a></b>
+    </div>
+    <div class="content"></div>
+    <script>
+        const loginButton = document.getElementById("login-button");
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+    <script>
+        // getting HTML elements
+        const nav = document.createElement("nav");
+        nav.innerHTML = `
+            <div class="nav-content">
+                <div class="toggle-btn">
+                    <i class='bx bx-plus'></i>
+                </div>
+                <span style="--i:1;">
+                    <a href="#"><i class='bx bxs-home'></i></a>
+                </span>
+                <span style="--i:2;">
+                    <a href="#"><i class='bx bxs-help-circle'></i></a>
+                </span>
+                <span style="--i:3;">
+                    <a href="#"><i class='bx bxs-chat'></i></a>
+                </span>
+                <span style="--i:4;">
+                    <a href="#"><i class='bx bxs-map'></i></a>
+                </span>
+            </div>
+        `;
+        document.body.appendChild(nav);
+
+        const toggleBtn = nav.querySelector(".toggle-btn");
+
+        toggleBtn.addEventListener("click", () => {
+            nav.classList.toggle("open");
+        });
+
+        function onDrag({ movementY }) { // movementY gets mouse vertical value
+            const navStyle = window.getComputedStyle(nav), // getting all CSS style of nav
+                  navTop = parseInt(navStyle.top), // getting nav top value & convert it into string
+                  navHeight = parseInt(navStyle.height), // getting nav height value & convert it into string
+                  windHeight = window.innerHeight; // getting window height
+
+            nav.style.top = navTop > 0 ? ${navTop + movementY}px : "1px";
+            if (navTop > windHeight - navHeight) {
+                nav.style.top = ${windHeight - navHeight}px;
+            }
+        }
+
+        nav.addEventListener("mousedown", () => {
+            nav.addEventListener("mousemove", onDrag);
+        });
+
+        nav.addEventListener("mouseup", () => {
+            nav.removeEventListener("mousemove", onDrag);
+        });
+
+        nav.addEventListener("mouseleave", () => {
+            nav.removeEventListener("mousemove", onDrag);
+        });
+        // Function to start the fade-in animation
+        function startFadeInAnimation() {
+            const fadeElementsRight = document.querySelectorAll('.fade-in-right');
+            const fadeElementsLeft = document.querySelectorAll('.fade-in-left');
+            fadeElementsRight.forEach((element, index) => {
+                setTimeout(() => {
+                    element.classList.add('start-fade-in-right');
+                }, index * 2000); // Delay of 2 seconds for each element
+            });
+            fadeElementsLeft.forEach((element, index) => {
+                setTimeout(() => {
+                    element.classList.add('start-fade-in-left');
+                }, index * 2000); // Delay of 2 seconds for each element
+            });
+        }
+
+        // Start the animation when the page loads
+        window.addEventListener('load', startFadeInAnimation);
+
+    </script>
+    <script>
+  document.querySelector('.has-submenu').addEventListener('mouseover', function() {
+    this.querySelector('.submenu').style.display = 'block';
+  });
+  document.querySelector('.has-submenu').addEventListener('mouseout', function() {
+    this.querySelector('.submenu').style.display = 'none';
+  });
+</script>
+    
+    <script>
+        const body = document.querySelector('body'),
+            sidebar = body.querySelector('nav'),
+            toggle = body.querySelector(".toggle"),
+            searchBtn = body.querySelector(".search-box"),
+            modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+
+        searchBtn.addEventListener("click", () => {
+            sidebar.classList.remove("close");
+        });
+    </script>
+</body>
+</html>

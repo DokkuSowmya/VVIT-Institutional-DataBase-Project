@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elective Courses</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            padding-top: 100px; /* Adjust padding to avoid content overlapping with the fixed header */
+        }
+        h1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            color: #ffffff;
+            background-color: darkorange;
+            margin: 0;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius:0 0 20px 20px;
+            z-index: 1000; /* Ensure the header is on top of other content */
+        }
+        h1 img {
+            position:absolute;
+            top:10%;
+            left:20px;
+            height: 50px; /* Adjust the height of the logo image */
+            margin-right: 20px; /* Space between the logo and the header text */
+        }
+        .filter-container {
+            margin-top: 20px; /* Add margin to separate filters from the header */
+            margin-bottom: 40px; /* Add margin to create space between the filters and the table */
+        }
+        .filter-container label {
+            font-weight: bold;
+            color: #333;
+        }
+        .filter-container select {
+            margin: 0 20px 10px 0; /* Increase margin-right to add space between dropdowns */
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+        table {
+            width: 80%;
+            border: 1px solid darkorange;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+        table th, table td {
+            border: 1px solid darkorange;
+            padding: 8px;
+            text-align: center;
+        }
+        table th {
+            background-color: darkorange;
+            color: #fff;
+        }
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<h1>
+    <img src="logo.jpg" alt="VVIT Logo"> <!-- Replace with the path to your logo image -->
+    ELECTIVE COURSES
+</h1>
+
+<div class="filter-container">
+    <label for="electiveType">Elective Type:</label>
+    <select id="electiveType" onchange="filterTable()">
+        <option value="All">All</option>
+        <option value="PE">PROFESSIONAL ELECTIVE(PE)</option>
+        <option value="OE">OPEN ELECTIVE(OE)</option>
+    </select>
+
+    <label for="branch">Branch:</label>
+    <select id="branch" onchange="filterTable()">
+        <option value="">Select Branch</option>
+        <option value="Civil Engineering">Civil Engineering</option>
+        <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
+        <option value="Mechanical Engineering">Mechanical Engineering</option>
+        <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+        <option value="Computer Science Engineering">Computer Science Engineering</option>
+        <option value="Information Technology">Information Technology</option>
+        <option value="CSE - Artificial Intelligence and Machine Learning (CSM)">CSE - Artificial Intelligence and Machine Learning (CSM)</option>
+        <option value="Artificial Intelligence and Machine Learning (AIM)">Artificial Intelligence and Machine Learning (AIM)</option>
+        <option value="CSE - Artificial Intelligence and Data Science">CSE - Artificial Intelligence and Data Science</option>
+        <option value="CSE - Internet of things and Cyber security including Block chain Technology">CSE - Internet of things and Cyber security including Block chain Technology</option>
+        <option value="CSE - Internet of Things">CSE - Internet of Things</option>
+    </select>
+</div>
+
+<table id="bosTable">
+    <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Branch</th>
+            <th>Year</th>
+            <th>Semester</th>
+            <th>Elective Type</th>
+            <th>Elective Code</th>
+            <th>Elective Name</th>
+            <th>L</th>
+            <th>T</th>
+            <th>P</th>
+            <th>C</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Information Technology</td>
+            <td>2</td>
+            <td>2</td>
+            <td>PE</td>
+            <td>-</td>
+            <td>NPTEL/SWAYAM Professional Elective-I </td>
+            <td>3</td>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Information Technology</td>
+            <td>3</td>
+            <td>3.1</td>
+            <td>PE</td>
+            <td>PE 3101 </td>
+            <td>Data Warehousing and Data Mining Professional Elective IIA<br>Software Project Management Professional Elective IIB<br>Computer Graphics Professional Elective IICE<br>Commerce Professional Elective IID</td>
+            <td>3</td>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Information Technology</td>
+            <td>3</td>
+            <td>3.1</td>
+            <td>OE</td>
+            <td>OE3101</td>
+            <td>Front-End Development (Open Elective I/Job Oriented Course I)</td>
+            <td>3</td>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Information Technology</td>
+            <td>3</td>
+            <td>3.2</td>
+            <td>OE</td>
+            <td>OE3201 </td>
+            <td>Machine Learning Open Elective II/Job Oriented Course II</td>
+            <td>3</td>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Information Technology</td>
+            <td>4</td>
+            <td>4.1</td>
+            <td>PE</td>
+            <td>PE4101</td>
+            <td>Big Data Analytics Professional Elective IIIA<br>Software Testing Methodologies Professional Elective IIIB<br>Image Processing Professional Elective IIIC<br>Devops Professional Elective IIID</td>
+            <td>3</td>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Information Technology</td>
+            <td>4</td>
+            <td>4.1</td>
+            <td>PE</td>
+            <td>PE4102</td>
+            <td>Mobile Computing Professional Elective IVA<br>Deep Learning Professional Elective IVB<br>Multimedia and Animation Professional Elective IVC<br>Cyber Security and Forensics Professional Elective IVD</td>
+            <td>3</td>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Information Technology</td>
+            <td>4</td>
+            <td>4.1</td>
+            <td>PE</td>
+            <td>PE4103</td>
+            <td>Ui/Ux Design Professional Elective VA<br>No SQL Databases Professional Elective VB<br>Human Computer Interaction Professional Elective VC<br>Network Programming Professional Elective VD</td>
+            <td>3</td>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Information Technology</td>
+            <td>4</td>
+            <td>4.1</td>
+            <td>OE</td>
+            <td>OE4101</td>
+            <td>Data Science</td>
+            <td>3</td>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Information Technology</td>
+            <td>4</td>
+            <td>4.1</td>
+            <td>OE</td>
+            <td>OE4201</td>
+            <td>Cloud Computing</td>
+            <td>3</td>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    function filterTable() {
+        var electiveType = document.getElementById('electiveType').value;
+        var branch = document.getElementById('branch').value;
+        var table = document.getElementById('bosTable');
+        var rows = table.getElementsByTagName('tr');
+
+        for (var i = 1; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName('td');
+            var show = true;
+
+            if (electiveType != 'All' && cells[4].textContent.trim() !== electiveType) {
+                show = false;
+            }
+
+            if (branch && cells[1].textContent.trim() !== branch) {
+                show = false;
+            }
+
+            rows[i].style.display = show ? '' : 'none';
+        }
+    }
+</script>
+
+</body>
+</html>

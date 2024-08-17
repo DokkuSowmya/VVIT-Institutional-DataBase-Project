@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CURRICULUM STRUCTURE & SYLLABUS</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Soft light blue */
+    }
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: darkorange;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px;
+    }
+    header img {
+        position:absolute;
+        width: 90px;
+        height: auto;
+        right:50px;
+        top:25px;
+        left:60px;
+    }
+    .header-title {
+        flex-grow: 1;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        color: white; /* Ensuring the text color contrasts well with the orange background */
+    }
+    main {
+        text-align: center;
+        margin: 30px 30px 30px; /* Reduced top margin to move the heading closer */
+    }
+    h1 {
+        margin: 10px 0; /* Reduced margin to decrease space around the headings */
+    }
+    .align {
+        text-align: center;
+    }
+    form {
+        margin-top: 50px; /* Added margin to move the dropdowns lower */
+    }
+    select {
+        margin: 10px;
+        width: 250px; /* Increase width here */
+        height: 40px; /* Adjust height here */
+        font-size: 16px; /* Optional: Adjust font size for better readability */
+    }
+    #resultTable {
+        margin: 20px auto;
+        width: 80%; /* Adjust the width of the table */
+        border-collapse: collapse;
+        display: none; /* Initially hide the table */
+    }
+    #resultTable th, #resultTable td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+    }
+    #resultTable th {
+        background-color: darkorange;
+        color: white;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <img src="logo.jpg" alt="VVIT Logo">
+    <h1 class="header-title">CURRICULAR STRUCTURE & SYLLABUS</h1>
+</header>
+
+<main>
+    <h1>CURRICULAR ASPECTS</h1>
+    <form action="#" method="post">
+      <div class="align">
+        <label for="dept">Choose Department:</label>
+        <select id="dept" name="dept" onchange="updateTable()">
+            <option value="">Select Department</option>
+            <option value="IT">IT</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="MECH">MECH</option>
+            <option value="CIC">CIC</option>
+            <option value="AIDS">AIDS</option>
+            <option value="CSO">CSO</option>
+            <option value="CIVIL">CIVIL</option>
+        </select>
+        <label for="reg">Choose Regulation:</label>
+        <select name="regulation" id="reg" onchange="updateTable()">
+            <option value="">Select Regulation</option>
+            <option value="R19">R19</option>
+            <option value="R20">R20</option>
+            <option value="R23">R23</option>
+        </select>
+      </div>
+    </form>
+</main>
+
+<div class="align">
+<table id="resultTable">
+    <thead>
+        <tr>
+            <th>DEPARTMENT</th>
+            <th>REGULATION</th>
+            <th>STRUCTURE & SYLLABUS</th>
+            <th>DOWNLOAD</th> <!-- New column for download -->
+        </tr>
+    </thead>
+    <tbody>
+       
+    <!-- Rows will be dynamically inserted here -->
+    </tbody>
+</table>
+</div>
+
+<script>
+    const data = [
+        { dept: "IT", reg: "R19", link: "R19-IT.pdf" },
+        { dept: "CSE", reg: "R19", link: "R19-CSE-Regulations.pdf" },
+        { dept: "EEE", reg: "R19", link: "R19-EEE.pdf" },
+        { dept: "CIVIL", reg: "R19", link: "R19-CIVIL.pdf" },
+        { dept: "MECH", reg: "R19", link: "R19-MECH.pdf" },
+        { dept: "CIC", reg: "R19", link: "R19-CIC.pdf" },
+        { dept: "CSO", reg: "R19", link: "R19-CSO.pdf" },
+        { dept: "ECE", reg: "R19", link: "R19-ECE.pdf" },
+        { dept: "AIDS", reg: "R19", link: "R19-AIDS.pdf" },
+     
+        { dept: "IT", reg: "R20", link: "R20-IT.pdf" },
+        { dept: "CSE", reg: "R20", link: "R20-CSE-Coursestructure.pdf" },
+        { dept: "EEE", reg: "R20", link: "R20-EEE.pdf" },
+        { dept: "CIVIL", reg: "R20", link: "R20-CIVIL.pdf" },
+        { dept: "MECH", reg: "R20", link: "R20-MECH.pdf" },
+        { dept: "CIC", reg: "R20", link: "R20-CIC.pdf" },
+        { dept: "CSO", reg: "R20", link: "R20-CSO.pdf" },
+        { dept: "ECE", reg: "R20", link: "R20-ECE.pdf" },
+        {dept:"AIDS",reg:"R20",link:"R20-AIDS.pdf"},
+        
+        { dept: "IT", reg: "R23", link: "R23-IT.pdf" },
+        { dept: "CSE", reg: "R23", link: "R23-CSE-Regulations.pdf" },
+        { dept: "EEE", reg: "R23", link: "R23-EEE.pdf" },
+        { dept: "CIVIL", reg: "R23", link: "R23-CIVIL.pdf" },
+        { dept: "MECH", reg: "R23", link: "R23-MECH.pdf" },
+        { dept: "CIC", reg: "R23", link: "R23-CIC.pdf" },
+        { dept: "CSO", reg: "R23", link: "R23-CSO.pdf" },
+        { dept: "ECE", reg: "R23", link: "R23-ECE.pdf" },
+        { dept: "AIDS", reg: "R23", link: "R23-AIDS.pdf" }
+        
+    ];
+
+    function updateTable() {
+        const dept = document.getElementById('dept').value;
+        const reg = document.getElementById('reg').value;
+        const table = document.getElementById('resultTable');
+        const tbody = table.querySelector('tbody');
+
+        // Clear existing table rows
+        tbody.innerHTML = '';
+
+        // Filter data based on selected department and regulation
+        const filteredData = data.filter(row => 
+            (!dept || row.dept === dept) && 
+            (!reg || row.reg === reg)
+        );
+
+        // Check if filtered data exists
+        if (filteredData.length > 0) {
+            filteredData.forEach(item => {
+                // Create a new row
+                const row = document.createElement('tr');
+
+                // Department cell
+                const deptCell = document.createElement('td');
+                deptCell.textContent = item.dept;
+                row.appendChild(deptCell);
+
+                // Regulation cell
+                const regCell = document.createElement('td');
+                regCell.textContent = item.reg;
+                row.appendChild(regCell);
+
+                // Syllabus cell
+                const syllabusCell = document.createElement('td');
+                syllabusCell.innerHTML = `<a href="${item.link}" target="_blank">View Syllabus</a>`;
+                row.appendChild(syllabusCell);
+
+                // Download cell
+                const downloadCell = document.createElement('td');
+                downloadCell.innerHTML = `<a href="${item.link}" download>Download</a>`;
+                row.appendChild(downloadCell);
+
+                // Add the row to the table body
+                tbody.appendChild(row);
+            });
+            table.style.display = 'table'; // Show table
+        } else {
+            table.style.display = 'none'; // Hide table if no data
+        }
+    }
+</script>
+
+</body>
+</html>

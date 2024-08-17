@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            background-color: darkorange;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            top:0;
+            margin-top: 0px;
+            border-radius:15px;
+        }
+         h1 img {
+            position: absolute;
+            top: 25px;
+            left: 50px;
+            width: 90px; /* Adjust size as needed */
+            height: auto;
+            }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            margin: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            display: none;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: darkorange;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1><img src="logo.jpg" alt="VVIT Logo"> ADD ON COURSES</h1>
+    <div class="form-group">
+        <label for="year">Academic Year:</label>
+        <select id="year" name="year">
+            <option value="">Select Year</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+        </select>
+        <label for="dept">Choose Dept:</label>
+        <select id="dept" name="dept">
+            <option value="">Select Department</option>
+            <option value="IT">IT</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="CIC">CIC</option>
+            <option value="CSO">CSO</option>
+            <option value="MECH">MECH</option>
+            <option value="CIVIL">CIVIL</option>
+        </select>
+    </div>
+
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Academic Year</th>
+                <th>Dept</th>
+                <th>Certificate Provider</th>
+                <th>No of Students Enrolled</th>
+                <th>Duration of Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be inserted here dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        // Sample data to simulate table content
+        const sampleData = [
+            { sno: 1, year: "2019", dept: "IT", provider: "Provider A", students: 30, duration: "6 months" },
+            { sno: 2, year: "2019", dept: "CSE", provider: "Provider B", students: 25, duration: "3 months" },
+            { sno: 3, year: "2019", dept: "ECE", provider: "Provider C", students: 20, duration: "1 year" },
+            { sno: 4, year: "2019", dept: "EEE", provider: "Provider D", students: 15, duration: "4 months" },
+            { sno: 5, year: "2019", dept: "MECH", provider: "Provider E", students: 28, duration: "5 months" },
+            { sno: 6, year: "2019", dept: "CIVIL", provider: "Provider F", students: 22, duration: "6 months" },
+            { sno: 7, year: "2019", dept: "CIC", provider: "Provider G", students: 28, duration: "5 months" },
+            { sno: 8, year: "2019", dept: "CSO", provider: "Provider H", students: 22, duration: "6 months"}, 
+            { sno: 1, year: "2020", dept: "IT", provider: "Provider A", students: 30, duration: "6 months" },
+            { sno: 2, year: "2020", dept: "CSE", provider: "Provider B", students: 25, duration: "3 months" },
+            { sno: 3, year: "2020", dept: "ECE", provider: "Provider C", students: 20, duration: "1 year" },
+            { sno: 4, year: "2020", dept: "EEE", provider: "Provider D", students: 15, duration: "4 months" },
+            { sno: 5, year: "2020", dept: "MECH", provider: "Provider E", students: 28, duration: "5 months" },
+            { sno: 6, year: "2020", dept: "CIVIL", provider: "Provider F", students: 22, duration: "6 months" },
+            { sno: 7, year: "2020", dept: "CIC", provider: "Provider G", students: 28, duration: "5 months" },
+            { sno: 8, year: "2020", dept: "CSO", provider: "Provider H", students: 22, duration: "6 months"},
+            { sno: 1, year: "2021", dept: "IT", provider: "Provider A", students: 30, duration: "6 months" },
+            { sno: 2, year: "2021", dept: "CSE", provider: "Provider B", students: 25, duration: "3 months" },
+            { sno: 3, year: "2021", dept: "ECE", provider: "Provider C", students: 20, duration: "1 year" },
+            { sno: 4, year: "2021", dept: "EEE", provider: "Provider D", students: 15, duration: "4 months" },
+            { sno: 5, year: "2021", dept: "MECH", provider: "Provider E", students: 28, duration: "5 months" },
+            { sno: 6, year: "2021", dept: "CIVIL", provider: "Provider F", students: 22, duration: "6 months" },
+            { sno: 7, year: "2021", dept: "CIC", provider: "Provider G", students: 28, duration: "5 months" },
+            { sno: 8, year: "2021", dept: "CSO", provider: "Provider H", students: 22, duration: "6 months"},
+            { sno: 1, year: "2022", dept: "IT", provider: "Provider A", students: 30, duration: "6 months" },
+            { sno: 2, year: "2022", dept: "CSE", provider: "Provider B", students: 25, duration: "3 months" },
+            { sno: 3, year: "2022", dept: "ECE", provider: "Provider C", students: 20, duration: "1 year" },
+            { sno: 4, year: "2022", dept: "EEE", provider: "Provider D", students: 15, duration: "4 months" },
+            { sno: 5, year: "2022", dept: "MECH", provider: "Provider E", students: 28, duration: "5 months" },
+            { sno: 6, year: "2022", dept: "CIVIL", provider: "Provider F", students: 22, duration: "6 months" },
+            { sno: 7, year: "2022", dept: "CIC", provider: "Provider G", students: 28, duration: "5 months" },
+            { sno: 8, year: "2022", dept: "CSO", provider: "Provider H", students: 22, duration: "6 months"},
+        ];
+
+        // Function to filter and display table based on dropdown selection
+        function updateTable() {
+            const year = document.getElementById('year').value;
+            const dept = document.getElementById('dept').value;
+            const table = document.getElementById('resultsTable');
+            const tbody = table.querySelector('tbody');
+            tbody.innerHTML = ''; // Clear existing rows
+
+            // Filter data
+            const filteredData = sampleData.filter(item => 
+                (year === '' || item.year === year) && 
+                (dept === '' || item.dept === dept)
+            );
+
+            // Display table if data is available
+            if (filteredData.length > 0) {
+                filteredData.forEach(data => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${data.sno}</td>
+                        <td>${data.year}</td>
+                        <td>${data.dept}</td>
+                        <td>${data.provider}</td>
+                        <td>${data.students}</td>
+                        <td>${data.duration}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+                table.style.display = 'table'; // Show table
+            } else {
+                table.style.display = 'none'; // Hide table if no data
+            }
+        }
+
+        // Attach event listeners to dropdowns
+        document.getElementById('year').addEventListener('change', updateTable);
+        document.getElementById('dept').addEventListener('change', updateTable);
+    </script>
+</body>
+</html>

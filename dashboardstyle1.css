@@ -1,0 +1,282 @@
+@charset "UTF-8";
+body {
+    background: url("college.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 50vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+h1{
+   color:red;
+   font-size:10px;
+}
+.header-title {
+    text-align: center; /* Changed from center to left */
+    font-size: 40px;
+    position: absolute;
+    left: 50px; /* Changed from 500px to 100px */
+    color: red; /* Ensure text is visible */
+}
+#login-button {
+    background-color: red; /* Set background color to red */
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white; /* Set text color to white */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 10px 20px; /* Add some padding to make it look like a button */
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position:absolute;
+  z-index: 1;
+  top:50;
+  left:50;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 150px;
+}
+
+.sidenav a {
+  padding: 15px 5px 5px 5px;
+  text-decoration: none;
+  padding-top:20px;
+  font-size: 20px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: black;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 1px;
+  right: 5px;
+  font-size: 15px;
+  margin-left: 100px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 20px;}
+  .sidenav a {font-size: 25px;}
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: white;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+main{
+   position:absolute;
+   top:20px;
+   left:150px;
+   margin-top:20px;
+}
+img{
+   width:10%;
+   height:auto;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: white;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 100px;
+  box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top:200px;
+  left:550px;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size:20px;
+
+}
+
+.dropdown-content a:hover {
+  background-color: #ff0080;
+}
+#menu{
+	position:absolute;
+	top:20px;
+	left:40px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+#home1{
+ font-size:20px;
+ position:fixed;
+ top:150px;
+ left:280px;
+}
+#Contact{
+font-size:20px;
+ position:fixed;
+ top:150px;
+ left:400px;
+}
+#drop{
+font-size:20px;
+ position:fixed;
+ top:150px;
+ left:550px;
+}
+ul {
+			padding: 0;
+			list-style: none;
+			background: #f2f2f2;
+			width: 300px;
+		}
+
+		ul li {
+			display: block;
+			position: relative;
+			line-height: 10px;
+			text-align: left;
+			padding:5px;
+			font-size:5px;
+		}
+		ul li a {
+			display: block;
+			color: #333;
+			
+		}
+		ul li a:hover {
+			color: #fff;
+			background: #939393;
+		}
+		ul li ul.dropdown1 {
+			background: #f2f2f2;
+			display: none;
+			position: absolute;
+			z-index: 999;
+			left: 0;
+			
+		}
+ul li:hover ul.dropdown1 {
+			display: block;
+			/* Display the dropdown */
+			
+		}
+/* Draggable Circular Navigation Menu Integration */
+
+nav {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+}
+
+nav .nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-45deg);
+}
+
+.nav-content .toggle-btn,
+.nav-content span a {
+  height: 60px;
+  width: 60px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-content .toggle-btn {
+  font-size: 35px;
+  color: red;
+  z-index: 100;
+  cursor: pointer;
+  transform: rotate(-225deg);
+  transition: all 0.6s ease;
+}
+
+nav.open .toggle-btn {
+  transform: rotate(0deg);
+}
+
+.nav-content span {
+  position: absolute;
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+nav.open .nav-content span {
+  transform: rotate(calc(var(--i) * (360deg / 8))) translateY(50px);
+  opacity: 1;
+}
+
+.nav-content span a {
+  text-decoration: none;
+  transform: rotate(45deg);
+}
+
+.nav-content span a i {
+  font-size: 24px;
+  color:red;
+  transform: rotate(calc(var(--i) * (360deg / -8)));
+  opacity: 0.8;
+  transition: 0.2s;
+}
+
+.nav-content span a:hover i {
+  opacity: 1;
+}
